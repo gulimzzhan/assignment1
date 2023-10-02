@@ -1,0 +1,136 @@
+.navbar .navbar-nav .nav-link {
+     color: white;
+}
+*{
+     font-family: Poppins;
+}
+
+.main-container {
+     position: relative;
+     text-align: center;
+     color: white;
+     background: url('../pictures/cathy-pham-3jAN9InapQI-unsplash.jpg') no-repeat center center;
+     background-size: cover;
+     height: 100vh;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+}
+
+.welcome-text {
+     text-align: center;
+     font-family: 'Poppins', sans-serif;
+     font-size: 5vw;
+     font-weight: 700;
+}
+
+#main-button {
+     color: #FFF;
+     font-size: 2vw;
+     width: 40%;
+     max-width: 237px;
+}
+
+.section2 {
+     color: #424242;
+}
+.section2-photos {
+     position: relative;
+     margin-right: 20%;
+}
+
+.section2-photos img {
+     position: relative;
+}
+
+#second-image {
+     top: 150px;
+     left: 180px;
+     z-index: 1;
+}
+.section3 {
+     background: #F4E3E9;
+     padding: 60px 0;
+}
+
+.section3 h1 {
+     color: #E43071;
+     font-family: 'Poppins', sans-serif;
+     font-size: 36px;
+     font-weight: 700;
+     margin-bottom: 20px;
+}
+
+.section3 p {
+     color: #424242;
+     font-family: 'Poppins', sans-serif;
+     font-size: 18px;
+     font-weight: 400;
+}
+
+.feedback-box {
+     background: #FFF;
+     border-radius: 10px;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+     padding: 30px;
+     margin: 20px 0;
+     text-align: center;
+}
+
+.feedback-box h2 {
+     color: #E43071;
+     font-family: 'Poppins', sans-serif;
+     font-size: 24px;
+     font-weight: 600;
+     margin-bottom: 20px;
+}
+
+.feedback-quote {
+     position: relative;
+     padding: 0 20px;
+     text-align: left;
+}
+
+.feedback-quote img {
+     position: absolute;
+     top: 0;
+     left: 0;
+}
+
+.feedback-quote p {
+     color: #424242;
+     font-family: 'Poppins', sans-serif;
+     font-size: 16px;
+     font-weight: 400;
+     line-height: 1.5;
+     margin-left: 35px;
+}
+
+.feedback-details {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     margin-top: 20px;
+     line-height: 50%;
+}
+
+.feedback-details img {
+     border-radius: 50%;
+     margin-right: 10px;
+}
+
+.feedback-details h3 {
+     color: #424242;
+     font-family: 'Poppins', sans-serif;
+     font-size: 18px;
+     font-weight: 600;
+     margin-top: 15px;
+}
+
+.feedback-details p {
+     color: #969BAB;
+     font-family: 'Poppins', sans-serif;
+     font-size: 14px;
+     font-weight: 400;
+}
