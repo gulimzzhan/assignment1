@@ -12,7 +12,7 @@
 <body class="bg-light">
      <nav class="navbar navbar-expand-lg navbar-light justify-content-between" style="background: #E43071;">
           <a class="navbar-brand" href="bindex.html">
-               <img src="../pictures/The Benefits of Milo.png" alt="main-logo" width="150">
+               <img src="/pictures/The Benefits of Milo.png" alt="main-logo" width="150">
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                <span class="navbar-toggler-icon"></span>
@@ -30,7 +30,7 @@
                     </li>
                     <li class="nav-item">
                          <a class="nav-link" href="nutrition.html">Nutrition</a>
-                    </li
+                    </li>
                     <li class="nav-item">
                          <a class="nav-link" href="freetrial.html">Free trial</a>
                     </li>
@@ -55,6 +55,10 @@
                               <button id="main-button" class="btn btn rounded-pill w-75" style="background-color: #E43071; font-size: 20px;">See the benefits</button>
                          </div>
                     </div>
+               </div>
+               <div id="countdown-container" class="countdown-theme">
+                    <p class="countdown-message">Registration for 2 classes with the price of 1 class!</p>
+                    <p class="countdown-timer" id="countdown-timer"></p>
                </div>
           </section>
           <section class="section2">
@@ -135,7 +139,16 @@
                          </div>
                     </div>
                </div>
-          </section>           
+          </section> 
+          <section>
+               <h2>To-Do List</h2>
+               <ul id="todo-list">
+               <!-- To-do list items will be added here dynamically using JavaScript -->
+               </ul>
+               <input type="text" id="new-task" placeholder="Add a new task">
+               <button id="add-task">Add Task</button>
+          </section>
+               
      </main>
      <footer class="text-white py-5 text-secondary" style="background-color: black;">
           <div class="container">
@@ -193,5 +206,62 @@
      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+     <script>
+          const targetDate = new Date('2023-10-30T23:59:59').getTime();
+
+          const countdownMessage = "Registration for 2 classes with the price of 1 class! The sale ends in...";
+
+
+          const timer = setInterval(function() {
+          const now = new Date().getTime();
+          const timeRemaining = targetDate - now;
+
+          const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+          const countdownTimer = document.getElementById('countdown-timer');
+          countdownTimer.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+
+          const countdownMessageElement = document.querySelector('.countdown-message');
+          countdownMessageElement.innerHTML = countdownMessage;
+
+
+     if (timeRemaining <= 0) {
+          clearInterval(timer);
+          countdownMessageElement.innerHTML = "The sale has ended!";
+          countdownTimer.style.display = "none"; 
+     }
+}, 1000);
+
+          const todoList = document.getElementById('todo-list');
+          const newTaskInput = document.getElementById('new-task');
+          const addTaskButton = document.getElementById('add-task');
+
+    // Event listener to add a new task
+     addTaskButton.addEventListener('click', function() {
+          const taskText = newTaskInput.value.trim();
+     if (taskText !== '') {
+          const listItem = document.createElement('li');
+          listItem.textContent = taskText;
+          const deleteButton = document.createElement('button');
+          deleteButton.textContent = 'Delete';
+
+          listItem.appendChild(deleteButton);
+          todoList.appendChild(listItem);
+
+            // Clear the input field
+          newTaskInput.value = '';
+            // Event listener to delete a task
+          deleteButton.addEventListener('click', function() {
+          todoList.removeChild(listItem);
+});
+}
+});
+</script>
+
+     </script>
 </body>
 </html>

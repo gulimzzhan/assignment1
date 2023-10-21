@@ -49,6 +49,21 @@
      left: 180px;
      z-index: 1;
 }
+.countdown-theme {
+     background-color: #E43071;
+     color: white;
+     padding: 10px;
+     text-align: center;
+     border-radius: 10px;
+}
+.countdown-message {
+     font-size: 20px;
+     margin: 0;
+}
+.countdown-timer {
+     font-size: 24px;
+     font-weight: bold;
+}
 .section3 {
      background: #F4E3E9;
      padding: 60px 0;
