@@ -1,7 +1,8 @@
 .navbar .navbar-nav .nav-link {
      color: white;
 }
-*{
+
+* {
      font-family: Poppins;
 }
 
@@ -35,6 +36,7 @@
 .section2 {
      color: #424242;
 }
+
 .section2-photos {
      position: relative;
      margin-right: 20%;
@@ -49,20 +51,24 @@
      left: 180px;
      z-index: 1;
 }
+
 .countdown-theme {
      background-color: #E43071;
      color: white;
      padding: 10px;
      text-align: center;
 }
+
 .countdown-message {
      font-size: 20px;
      margin: 0;
 }
+
 .countdown-timer {
      font-size: 24px;
      font-weight: bold;
 }
+
 .section3 {
      background: #F4E3E9;
      padding: 60px 0;
@@ -156,4 +162,169 @@
      font-family: 'Poppins', sans-serif;
      font-size: 14px;
      font-weight: 400;
+}
+
+#todo-list {
+     background-color: #969BAB;
+     padding: 20px;
+     border-radius: 10px;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+     margin: 20px 0;
+}
+
+#todo-list li {
+     font-family: 'Poppins', sans-serif;
+     font-size: 18px;
+     font-weight: 400;
+     color: #424242;
+     margin-bottom: 10px;
+     margin-left: 25px;
+}
+
+#new-task {
+     font-family: 'Poppins', sans-serif;
+     font-size: 18px;
+     color: #424242;
+     padding: 10px;
+     border: 1px solid #E43071;
+     border-radius: 5px;
+     margin-top: 10px;
+}
+
+#add-task {
+     background-color: #E43071;
+     color: white;
+     font-family: 'Poppins', sans-serif;
+     font-size: 18px;
+     padding: 10px 20px;
+     border: none;
+     border-radius: 5px;
+     cursor: pointer;
+     margin-top: 10px;
+}
+
+#add-task:hover {
+     background-color: #FF5D8B;
+}
+
+.delete-button {
+     background-color: #E43071;
+     color: white;
+     font-family: 'Poppins', sans-serif;
+     font-size: 16px;
+     padding: 6px 10px;
+     border: none;
+     border-radius: 5px;
+     cursor: pointer;
+     margin-left: 15px;
+}
+
+.delete-button:hover {
+     background-color: #FF5D8B;
+}
+
+/* Reset some default form styles */
+form {
+     margin: 0;
+     padding: 0;
+     width: 50%;
+}
+
+/* Center the form within the container */
+.welcome-text-form {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+}
+
+/* Style form labels */
+label {
+     display: block;
+     margin-bottom: 5px;
+}
+
+/* Style form inputs */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+     width: 100%;
+     padding: 10px;
+     margin-bottom: 10px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+     box-sizing: border-box;
+     /* Ensure padding is included in the width */
+}
+
+/* Style form submit button */
+button {
+     background-color: #E43071;
+     color: white;
+     padding: 10px 20px;
+     border: none;
+     border-radius: 5px;
+     cursor: pointer;
+     display: block;
+     /* Full width button */
+     margin-top: 10px;
+     /* Space between button and the last input */
+}
+
+/* Display error and success messages */
+#error-message,
+#success-message {
+     margin-top: 10px;
+     font-weight: bold;
+}
+
+/* Custom CSS for form options */
+select.form-select {
+     padding: 10px;
+     border: 1px solid #fff;
+     border-radius: 5px;
+}
+
+/* Style the selected option */
+select.form-select option {
+     background-color: #E43071;
+     color: white;
+     font-weight: bold;
+}
+
+.faq-accordion {
+     max-width: 600px;
+     margin: 0 auto;
+}
+
+.faq-item {
+     border: 1px solid #ccc;
+     margin-bottom: 10px;
+     overflow: hidden;
+}
+
+.faq-question {
+     background-color: #f0f0f0;
+     padding: 10px;
+     cursor: pointer;
+     transition: background-color 0.3s;
+     /* Smooth background color transition */
+}
+
+.faq-answer {
+     max-height: 0;
+     padding: 0 10px;
+     overflow: hidden;
+     transition: max-height 0.3s;
+     /* Smooth max-height transition */
+}
+
+.faq-item:hover .faq-question {
+     background-color: #e0e0e0;
+     /* Adjust the background color on hover */
+}
+
+.faq-item:hover .faq-answer {
+     max-height: 200px;
+     /* Adjust this value based on your content */
 }
