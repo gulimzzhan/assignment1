@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sport & Healthy Diet Quiz</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div id="quiz-container">
+        <h1>Sport & Healthy Diet Quiz</h1>
+        <p id="question"></p>
+        <div id="options">
+            <button id="option1"></button>
+            <button id="option2"></button>
+            <button id="option3"></button>
+            <button id="option4"></button>
+        </div>
+        <p id="score">Score: 0</p>
+        <button id="restart">Restart</button>
+    </div>
+
+    <script>
+        const questions = [{
+                question: "What is the most important meal of the day?",
+                options: ["Breakfast", "Lunch", "Dinner", "Snack"],
+                answer: "Breakfast"
+            },
+            {
+                question: "Which sport uses a net and a shuttlecock?",
+                options: ["Soccer", "Tennis", "Badminton", "Basketball"],
+                answer: "Badminton"
+            },
+            {
+                question: "How many players are there on a standard soccer team?",
+                options: ["7", "11", "9", "6"],
+                answer: "11"
+            },
+            {
+                question: "Which nutrient is essential for muscle growth?",
+                options: ["Carbohydrates", "Protein", "Fiber", "Vitamins"],
+                answer: "Protein"
+            },
+            {
+                question: "Which exercise is often called the 'king of exercises'?",
+                options: ["Running", "Push-ups", "Yoga", "Squats"],
+                answer: "Squats"
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        const questionElement = document.getElementById("question");
+        const optionsContainer = document.getElementById("options");
+        const scoreElement = document.getElementById("score");
+        const restartButton = document.getElementById("restart");
+
+        function showQuestion(questionIndex) {
+            if (questionIndex < questions.length) {
+                const question = questions[questionIndex];
+                questionElement.textContent = question.question;
+                optionsContainer.innerHTML = '';
+
+                for (let i = 0; i < question.options.length; i++) {
+                    const optionButton = document.createElement("button");
+                    optionButton.textContent = question.options[i];
+                    optionButton.addEventListener("click", () => {
+                        checkAnswer(question.options[i], question.answer);
+                    });
+                    optionsContainer.appendChild(optionButton);
+                }
+            } else {
+                showResult();
+            }
+        }
+
+        function checkAnswer(selectedOption, correctAnswer) {
+            if (selectedOption === correctAnswer) {
+                score++;
+            }
+            currentQuestion++;
+            scoreElement.textContent = `Score: ${score}`;
+            showQuestion(currentQuestion);
+        }
+
+        function showResult() {
+            questionElement.textContent = "Quiz completed! Your score is:";
+            optionsContainer.innerHTML = '';
+            restartButton.style.display = "block";
+        }
+
+        restartButton.addEventListener("click", () => {
+            currentQuestion = 0;
+            score = 0;
+            scoreElement.textContent = "Score: 0";
+            restartButton.style.display = "none";
+            showQuestion(currentQuestion);
+        });
+
+        showQuestion(currentQuestion);
+    </script>
+</body>
+
+</html>
