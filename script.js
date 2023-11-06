@@ -194,62 +194,82 @@ function play_audio() {
     });
 }
 
-const items = document.querySelectorAll('.item');
-const shuffleButton = document.getElementById('shuffle');
 
-shuffleButton.addEventListener('click', shuffleItems);
+const questions = [{
+        question: "What is the most important meal of the day?",
+        options: ["Breakfast", "Lunch", "Dinner", "Snack"],
+        answer: "Breakfast"
+    },
+    {
+        question: "Which sport uses a net and a shuttlecock?",
+        options: ["Soccer", "Tennis", "Badminton", "Basketball"],
+        answer: "Badminton"
+    },
+    {
+        question: "How many players are there on a standard soccer team?",
+        options: ["7", "11", "9", "6"],
+        answer: "11"
+    },
+    {
+        question: "Which nutrient is essential for muscle growth?",
+        options: ["Carbohydrates", "Protein", "Fiber", "Vitamins"],
+        answer: "Protein"
+    },
+    {
+        question: "Which exercise is often called the 'king of exercises'?",
+        options: ["Running", "Push-ups", "Yoga", "Squats"],
+        answer: "Squats"
+    }
+];
 
-// Shuffle the items initially
-shuffleItems();
+let currentQuestion = 0;
+let score = 0;
 
-items.forEach(item => {
-    item.addEventListener('dragstart', dragStart);
-    item.addEventListener('dragover', dragOver);
-    item.addEventListener('drop', drop);
+const questionElement = document.getElementById("question");
+const optionsContainer = document.getElementById("options");
+const scoreElement = document.getElementById("score");
+const restartButton = document.getElementById("restart");
+
+function showQuestion(questionIndex) {
+    if (questionIndex < questions.length) {
+        const question = questions[questionIndex];
+        questionElement.textContent = question.question;
+        optionsContainer.innerHTML = '';
+
+        for (let i = 0; i < question.options.length; i++) {
+            const optionButton = document.createElement("button");
+            optionButton.textContent = question.options[i];
+            optionButton.addEventListener("click", () => {
+                checkAnswer(question.options[i], question.answer);
+            });
+            optionsContainer.appendChild(optionButton);
+        }
+    } else {
+        showResult();
+    }
+}
+
+function checkAnswer(selectedOption, correctAnswer) {
+    if (selectedOption === correctAnswer) {
+        score++;
+    }
+    currentQuestion++;
+    scoreElement.textContent = "Score: " + score;
+    showQuestion(currentQuestion);
+}
+
+function showResult() {
+    questionElement.textContent = "Quiz completed! Your score is:";
+    optionsContainer.innerHTML = '';
+    restartButton.style.display = "block";
+}
+
+restartButton.addEventListener("click", () => {
+    currentQuestion = 0;
+    score = 0;
+    scoreElement.textContent = "Score: 0";
+    restartButton.style.display = "none";
+    showQuestion(currentQuestion);
 });
 
-let draggedItem = null;
-
-function dragStart(e) {
-    draggedItem = this;
-}
-
-function dragOver(e) {
-    e.preventDefault();
-}
-
-function drop() {
-    if (draggedItem !== this) {
-        // Swap the items
-        const temp = this.textContent;
-        this.textContent = draggedItem.textContent;
-        draggedItem.textContent = temp;
-        checkGameCompletion();
-    }
-}
-
-function shuffleItems() {
-    const categories = document.querySelectorAll('.category');
-    categories.forEach(category => {
-        const items = category.querySelectorAll('.item');
-        items.forEach(item => {
-            const randomIndex = Math.floor(Math.random() * items.length);
-            category.appendChild(item);
-        });
-    });
-}
-
-function checkGameCompletion() {
-    let completed = true;
-    const categories = document.querySelectorAll('.category');
-    categories.forEach(category => {
-        const itemsInCategory = category.querySelectorAll('.item');
-        if (itemsInCategory.length !== 3) {
-            completed = false;
-        }
-    });
-
-    if (completed) {
-        alert('Congratulations! You have completed the game.');
-    }
-}
+showQuestion(currentQuestion);
