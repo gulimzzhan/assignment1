@@ -183,3 +183,73 @@ faqData.forEach((faq, index) => {
     faqItem.appendChild(answer);
     faqAccordion.appendChild(faqItem);
 });
+
+
+function play_audio() {
+    const playSoundBtn = document.getElementById("playSoundBtn");
+    const sound = document.getElementById("sound");
+
+    playSoundBtn.addEventListener("click", function () {
+        sound.play();
+    });
+}
+
+const items = document.querySelectorAll('.item');
+const shuffleButton = document.getElementById('shuffle');
+
+shuffleButton.addEventListener('click', shuffleItems);
+
+// Shuffle the items initially
+shuffleItems();
+
+items.forEach(item => {
+    item.addEventListener('dragstart', dragStart);
+    item.addEventListener('dragover', dragOver);
+    item.addEventListener('drop', drop);
+});
+
+let draggedItem = null;
+
+function dragStart(e) {
+    draggedItem = this;
+}
+
+function dragOver(e) {
+    e.preventDefault();
+}
+
+function drop() {
+    if (draggedItem !== this) {
+        // Swap the items
+        const temp = this.textContent;
+        this.textContent = draggedItem.textContent;
+        draggedItem.textContent = temp;
+        checkGameCompletion();
+    }
+}
+
+function shuffleItems() {
+    const categories = document.querySelectorAll('.category');
+    categories.forEach(category => {
+        const items = category.querySelectorAll('.item');
+        items.forEach(item => {
+            const randomIndex = Math.floor(Math.random() * items.length);
+            category.appendChild(item);
+        });
+    });
+}
+
+function checkGameCompletion() {
+    let completed = true;
+    const categories = document.querySelectorAll('.category');
+    categories.forEach(category => {
+        const itemsInCategory = category.querySelectorAll('.item');
+        if (itemsInCategory.length !== 3) {
+            completed = false;
+        }
+    });
+
+    if (completed) {
+        alert('Congratulations! You have completed the game.');
+    }
+}
